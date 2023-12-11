@@ -1,5 +1,6 @@
 # Music Player App
-![befor](https://github.com/Md-Iar-Hossain/Music_Player_App/assets/72465649/1dc598b3-5ac2-4351-9ecb-d508c6ec9193)
+
+![Music Player](https://github.com/Md-Iar-Hossain/Music_Player_App/assets/72465649/1dd02930-2fcc-4f10-8e2e-063be0e104b9)
 
 
 Hello  coders, <br>
@@ -7,11 +8,7 @@ I created this simple <b> Music Player App. </b> <br>
 <b> Author: </b> Muhammad iar Hossain<br>
 <b> Date of creation: </b> 8th December 2023<br>
 <b> Used Technology: </b> HTML5, CSS3, Vanilla JS<br>
-compatible with all major web browsers <br>
-
-![after](https://github.com/Md-Iar-Hossain/Music_Player_App/assets/72465649/a057f9f8-4aa5-4690-a7eb-459fdd0a6162)
-
-
+compatible with all major web browsers 
 
 Features: <br>
 => <i> Play the next and previous audio </i> </br>
