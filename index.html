@@ -1,0 +1,82 @@
+<!-- 
+    Author: Muhammad iar Hossain
+    Date of creation: 8th December 2023
+    Used Technology: HTML5, CSS3, Vanilla JS
+    compatiable for all major web browser 
+    Features: 
+      => play next and previous audio
+      => play random audio
+      => loop playlist
+      => loop single song 
+      => play and pause audio 
+      => highlight playing song 
+      => get audio file dynamically
+      => forward and backward duration through progressbar 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Music player | Vanilla js</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h3>Music player</h3>
+    <nav class="d-flex justify-between">
+      <span>All Tracks</span>
+      <span>Favourites</span>
+    </nav>
+    <audio id="main_audio"></audio>
+    <div class="audio_track_container">
+
+    </div>
+    <div class="track_player_tray">
+      <!-- <span class="close_btn">&times;</span> -->
+      <span class="close_btn material-symbols-outlined">
+        cancel
+        </span>
+      <figure>
+        <img src="" alt="cover image" id="active_track_cover">
+      </figure>
+      <marquee class="track_title">
+        <p class="active_track_title">The Way of The Tears - Exclusive Nasheed - Muhammad al Muqit</p>
+      </marquee>
+      <div class="audio_timeline">
+        <div class="audio_timeline_track">
+          <div class="audio_timeline_lebel"></div>
+        </div>
+        <div class="audio_duration d-flex justify-between">
+          <span class="audio_duration_begin">00:00</span>
+          <span class="audio_duration_end">00:00</span>
+        </div>
+        <div class="audio_controll_btn d-flex">
+          <span class="random_btn material-symbols-outlined">shuffle</span>
+          <span class="prev_btn material-symbols-outlined">fast_rewind</span>
+          <span id="playXXl" class="play_pause_btn material-symbols-outlined">play_circle</span>
+          <span class="next_btn material-symbols-outlined">fast_forward</span>
+          <span class="loop_btn material-symbols-outlined" title="Loop playlist">repeat</span>
+        </div>
+      </div>
+      <div class="bottom_player_bar d-flex">
+        <marquee class="track_name_slider">
+          <p class="active_track_title"></p>
+        </marquee>
+        <div class="track_controller d-flex">
+          <span class="prev_btn material-symbols-outlined">fast_rewind</span>
+          <span id="playXl" class="play_pause_btn material-symbols-outlined">play_circle</span>
+          <span class="next_btn material-symbols-outlined">fast_forward</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="musicList.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
