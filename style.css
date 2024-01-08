@@ -4,327 +4,384 @@
     Used Technology: HTML5, CSS3, Vanilla JS
     compatiable for all major web browser 
     Features: 
-      => play next and previous audio
-      => play random audio
-      => loop playlist
-      => loop single song 
-      => play and pause audio 
-      => highlight playing song 
-      => get audio file dynamically
-      => forward and backward duration through progressbar 
+      => Play next / previous audio
+      => Play random audio
+      => Loop playlist / single song 
+      => Play / pause audio 
+      => Highlight playing song 
+      => Get audio file dynamically
+      => Forward and backward duration through progressbar
+      => Keyboard navigation 
   */
- :root {
-   --clr: #d4d4d4;
-   --bgClr: #e5dbb4;
-   --darkClr: #3d4147;
-   --lightClr: #3c2b4f;
-   --black: #1d1d1e;
-   --lime: #7aff17;
-   --lightBlue: lightblue;
-   --outlineClr: #3cdf57;
-   --shadowClr: #0008;
-   --activeClr: #605074;
-   --darkHoverClr: #323232;
- }
-
- html {
-   font-size: 62.5%;
- }
-
- * {
-   margin: 0px;
-   padding: 0px;
-   box-sizing: border-box;
- }
-
- body {
-   color: var(--clr);
-   font-family: Tahoma;
-   display: grid;
-   place-items: center;
-   min-height: 100vh;
-   background: var(--bgClr);
-   text-rendering: optimizelegibility;
- }
-
- .d-flex {
-   display: flex;
- }
-
- .justify-between {
-   justify-content: space-between;
- }
-
- .active figure {
-   outline: 0.15rem solid var(--lime);
-   outline-offset: 0.5rem;
- }
-
- .active p {
-   color: var(--bgClr);
- }
-
- p {
-   line-height: 1.6;
-   font-size: 1.6rem;
- }
-
- p,
- span {
-   font-size: 1.6rem;
-   user-select: none;
- }
-
- span[class*="_btn"] {
-   font-size: 3.2rem;
+  :root {
+    --clr: #d4d4d4;
+    --bgClr: #e5dbb4;
+    --darkClr: #3d4147;
+    --lightClr: #3c2b4f;
+    --black: #1d1d1e;
+    --lime: #7aff17;
+    --lightBlue: lightblue;
+    --outlineClr: #3cdf57;
+    --shadowClr: #0008;
+    --activeClr: #605074;
+    --darkHoverClr: #323232;
+  }
+ 
+  html {
+    font-size: 62.5%;
+  }
+ 
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+ 
+  body {
+    color: var(--clr);
+    font-family: Tahoma;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: var(--bgClr);
+    text-rendering: optimizelegibility;
+  }
+  .d-flex {
+    display: flex;
+  }
+ 
+  .justify-between {
+    justify-content: space-between;
+  }
+ 
+  .active figure {
+    outline: 0.15rem solid var(--lime);
+    outline-offset: 0.5rem;
+  }
+ 
+  .active p {
+    color: var(--bgClr);
+  }
+ 
+  p {
+    line-height: 1.6;
+    font-size: 1.6rem;
+  }
+ 
+  p,
+  span {
+    font-size: 1.6rem;
+    user-select: none;
+  }
+ ul {list-style: none;}
+  span[class*="_btn"] {
+    font-size: 3.2rem;
+    cursor: pointer;
+  }
+ 
+  span[class*="_btn"]:hover {
+    color: var(--outlineClr);
+  }
+ 
+  #playXl {
+    font-size: 4.8rem;
+  }
+ 
+  #playXXl {
+    font-size: 5.6rem;
+  }
+ 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+ 
+  h2 {
+    font-size: 1.8rem;
+    margin: 0.8rem 0px 3.2rem;
+  }
+  .kbd_shortcut_btn {cursor: pointer;}
+  .keyboard_shortcut_pane {
+    position: absolute;
+    inset: -0.5rem;
+    scale: 0;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    background: var(--shadowClr);
+    border-radius: 3.2rem;
+    backdrop-filter: blur(1px);
+    transition: all 0.3s ease-in-out;
+}
+.keyboard_shortcut_pane.show {scale: 1;}
+.content_wrapper {
+  color: var(--black);
+  padding: 2.2rem;
+  width: calc(100% - 4rem);
+  border-radius: 1rem;
+  background: #fff;
+}
+.content_wrapper h3 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin-bottom: 3rem;
+}
+.content_wrapper p {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.content_wrapper li {
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--clr);
+}
+.content_wrapper button {
+  color: var(--lightClr);
+  cursor: pointer;
+  padding: 1rem 1.2rem;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+.content_wrapper button:hover,
+.content_wrapper button:focus-visible {
+  color: var(--clr);
+  background: var(--lightClr);
+}
+  nav {
+    margin-bottom: 1.5rem;
+  }
+ #all_track_list,
+ #favourite_list {
    cursor: pointer;
  }
-
- span[class*="_btn"]:hover {
-   color: var(--outlineClr);
+  .container {
+    position: relative;
+    width: 39rem;
+    padding: 1.6rem;
+    border-radius: 3.2rem;
+    height: 66rem;
+    background: var(--darkClr);
+    border: 0.3rem solid;
+    box-shadow: 0 0.1rem 1.5rem 0.2rem var(--shadowClr);
+  }
+ 
+  .audio_track_container,
+  .favourite_track_container {
+    padding: 0.8rem;
+    height: 43.3rem;
+    border-radius: 1.5rem;
+    overflow-y: scroll;
+    background: var(--black);
+  }
+ .favourite_track_container {display: none;}
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+ 
+  .audio_track_item {
+    gap: 1.6rem;
+    cursor: pointer;
+    margin: 0.8rem 0px;
+    padding-bottom: 0.8rem;
+    transition: all 0.5s ease-in-out 0s;
+  }
+ 
+  .audio_track_item:hover {
+    background: var(--darkHoverClr);
+  }
+ 
+  .audio_track_item:not(:last-child) {
+    border-bottom: 0.1rem solid var(--darkClr);
+  }
+ 
+  .audio_track_item figure {
+    width: 10rem;
+    height: 8rem;
+    overflow: hidden;
+    background: hsl(calc(360 / var(--totalIndex) * var(--colorIndex)), 30%, 50%);
+    border-radius: 0.6rem;
+  }
+ 
+  .track_label {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+ 
+  .track_player_tray {
+    position: absolute;
+    bottom: 1.6rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    height: 8rem;
+    border: 0.2rem solid var(--shadowClr);
+    border-radius: 4rem;
+    background: var(--lightClr);
+    transition: all 0.5s ease-in-out 0s;
+  }
+ 
+  .track_player_tray .close_btn {
+    width: 3.5rem;
+    opacity: 0;
+    font-size: 4rem;
+    cursor: pointer;
+    margin: 0.5rem 0px 0px 0.5rem;
+    color: var(--clr);
+    transition: all 0.2s ease-in-out 0s;
+  }
+ 
+  .track_player_tray.expand {
+    height: 53rem;
+    border-radius: 2rem;
+    background: var(--activeClr);
+  }
+ 
+  .track_player_tray figure {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    width: 6rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 4;
+    cursor: pointer;
+    background: var(--bgClr);
+    transition: all 0.2s ease-in-out 0s;
+  }
+ 
+  .track_player_tray.expand figure {
+    top: 5%;
+    left: 50%;
+    width: 15rem;
+    outline-offset: 0.8rem;
+    border: 0.2rem solid var(--lightBlue);
+    outline: 0.3rem solid var(--outlineClr);
+    transform: translateX(-50%);
+    transition-delay: 0.07s;
+  }
+ 
+  .track_title,
+  .audio_timeline {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transition: all 0.2s ease-in-out 0s;
+    transform: translateX(-50%);
+  }
+ 
+  .track_title {
+    top: 39%;
+    width: 32rem;
+  }
+ 
+  .audio_timeline {
+    top: 75%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  .track_player_tray.expand .audio_timeline {pointer-events: all;}
+  .audio_timeline_track {
+    position: relative;
+    height: 0.5rem;
+    width: 32rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background: var(--darkClr);
+  }
+ 
+  .audio_timeline_lebel {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: calc(var(--audioTimeLineWidth, 30%) * 1%);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--lightBlue);
+  }
+ 
+  .audio_timeline_lebel::before {
+    content: "";
+    position: absolute;
+    top: -0.4rem;
+    right: -0.4rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out 0s;
+    background: var(--bgClr);
+  }
+ 
+  .audio_duration {
+    margin-top: 0.5rem;
+  }
+  #fav_icon {
+   text-align: center;
  }
-
- #playXl {
-   font-size: 4.8rem;
- }
-
- #playXXl {
-   font-size: 5.6rem;
- }
-
- img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
- }
-
- h3 {
-   font-size: 1.8rem;
-   margin: 0.8rem 0px 3.2rem;
- }
-
- nav {
-   margin-block: 1.5rem;
- }
-
- .container {
-   position: relative;
-   width: 39rem;
-   padding: 1.6rem;
-   border-radius: 3.2rem;
-   height: 66rem;
-   background: var(--darkClr);
-   border: 0.3rem solid;
-   box-shadow: 0 0.1rem 1.5rem 0.2rem var(--shadowClr);
- }
-
- .audio_track_container {
-   padding: 0.8rem;
-   height: 43.3rem;
-   border-radius: 1.5rem;
-   overflow-y: scroll;
-   background: var(--black);
- }
-
- ::-webkit-scrollbar {
-   width: 0px;
- }
-
- .audio_track_item {
-   gap: 1.6rem;
-   cursor: pointer;
-   margin: 0.8rem 0px;
-   padding-bottom: 0.8rem;
-   transition: all 0.5s ease-in-out 0s;
- }
-
- .audio_track_item:hover {
-   background: var(--darkHoverClr);
- }
-
- .audio_track_item:not(:last-child) {
-   border-bottom: 0.1rem solid var(--darkClr);
- }
-
- .audio_track_item figure {
-   width: 10rem;
-   height: 8rem;
-   overflow: hidden;
-   background: hsl(calc(360 / var(--totalIndex) * var(--colorIndex)), 30%, 50%);
-   border-radius: 0.6rem;
- }
-
- .track_label {
-   width: 70%;
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
- }
-
- .track_player_tray {
-   position: absolute;
-   bottom: 1.6rem;
-   left: 0.8rem;
-   right: 0.8rem;
-   height: 8rem;
-   border: 0.2rem solid var(--shadowClr);
-   border-radius: 4rem;
-   background: var(--lightClr);
-   transition: all 0.5s ease-in-out 0s;
- }
-
- .track_player_tray .close_btn {
-   width: 3.5rem;
-   opacity: 0;
-   font-size: 4rem;
-   cursor: pointer;
-   margin: 0.5rem 0px 0px 0.5rem;
-   color: var(--clr);
-   transition: all 0.2s ease-in-out 0s;
- }
-
- .track_player_tray.expand {
-   height: 53rem;
-   border-radius: 2rem;
-   background: var(--activeClr);
- }
-
- .track_player_tray figure {
-   position: absolute;
-   top: 0.8rem;
-   left: 0.8rem;
-   width: 6rem;
-   aspect-ratio: 1 / 1;
-   border-radius: 50%;
-   overflow: hidden;
-   z-index: 4;
-   cursor: pointer;
-   background: var(--bgClr);
-   transition: all 0.2s ease-in-out 0s;
- }
-
- .track_player_tray.expand figure {
-   top: 5%;
-   left: 50%;
-   width: 15rem;
-   outline-offset: 0.8rem;
-   border: 0.2rem solid var(--lightBlue);
-   outline: 0.3rem solid var(--outlineClr);
-   transform: translateX(-50%);
-   transition-delay: 0.07s;
- }
-
- .track_title,
- .audio_timeline {
-   position: absolute;
-   left: 50%;
-   opacity: 0;
-   transition: all 0.2s ease-in-out 0s;
-   transform: translateX(-50%);
- }
-
- .track_title {
-   top: 39%;
-   width: 32rem;
- }
-
- .audio_timeline {
-   top: 75%;
-   transform: translate(-50%, -50%);
- }
-
- .audio_timeline_track {
-   position: relative;
-   height: 0.5rem;
-   width: 32rem;
-   cursor: pointer;
-   border-radius: 0.25rem;
-   background: var(--darkClr);
- }
-
- .audio_timeline_lebel {
-   position: absolute;
-   top: 0rem;
-   left: 0rem;
-   width: calc(var(--audioTimeLineWidth, 30%) * 1%);
-   height: 100%;
-   border-radius: inherit;
-   background: var(--lightBlue);
- }
-
- .audio_timeline_lebel::before {
-   content: "";
-   position: absolute;
-   top: -0.4rem;
-   right: -0.4rem;
-   width: 1.3rem;
-   height: 1.3rem;
-   border-radius: 50%;
-   transition: all 0.3s ease-in-out 0s;
-   background: var(--bgClr);
- }
-
- .audio_duration {
-   margin-top: 0.5rem;
- }
-
- .audio_controll_btn {
-   gap: 1.6rem;
-   margin-top: 4rem;
-   align-items: center;
-   justify-content: center;
- }
-
- .audio_controll_btn span {
-   transition: all 0.5s ease-in-out 0s;
- }
-
- .audio_controll_btn span.random_btn {
-   outline-offset: 0.5rem;
-   outline: transparent solid 0.3rem;
-   border-radius: 50%;
- }
-
- .audio_controll_btn span.active {
-   outline-color: var(--lime);
- }
-
- .track_player_tray.expand .close_btn,
- .track_player_tray.expand .track_title,
- .track_player_tray.expand .audio_timeline {
-   opacity: 1;
-   transition-delay: 0.4s;
- }
-
- .bottom_player_bar {
-   position: absolute;
-   bottom: 1.4rem;
-   left: 0.8rem;
-   right: 0.8rem;
-   align-items: center;
-   transition: opacity 0.3s ease-in-out 0s;
- }
-
- .track_player_tray.expand .bottom_player_bar {
-   opacity: 0;
-   pointer-events: none;
- }
-
- .track_controller {
-   width: 15rem;
-   align-items: center;
-   justify-content: space-evenly;
- }
-
- .track_controller button {
-   font-size: 1.7rem;
- }
-
- .bottom_player_bar marquee {
-   width: 20rem;
-   height: 3.2rem;
-   display: grid;
-   place-items: center;
-   margin-left: 0.5rem;
-   cursor: pointer;
- }
+  .audio_controll_btn {
+    gap: 1.6rem;
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .audio_controll_btn span {
+    transition: all 0.5s ease-in-out 0s;
+  }
+ 
+  .audio_controll_btn span.random_btn {
+    outline-offset: 0.5rem;
+    outline: transparent solid 0.3rem;
+    border-radius: 50%;
+  }
+ 
+  .audio_controll_btn span.active {
+    outline-color: var(--lime);
+  }
+ 
+  .track_player_tray.expand .close_btn,
+  .track_player_tray.expand .track_title,
+  .track_player_tray.expand .audio_timeline {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+ 
+  .bottom_player_bar {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity 0.3s ease-in-out 0s;
+  }
+ 
+  .track_player_tray.expand .bottom_player_bar {
+    opacity: 0;
+    pointer-events: none;
+  }
+ 
+  .track_controller {
+    width: 15rem;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+ 
+  .track_controller button {
+    font-size: 1.7rem;
+  }
+ 
+  .bottom_player_bar marquee {
+    width: 20rem;
+    height: 3.2rem;
+    display: grid;
+    place-items: center;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
