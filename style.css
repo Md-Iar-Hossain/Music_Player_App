@@ -111,7 +111,6 @@
     place-items: center;
     background: var(--shadowClr);
     border-radius: 3.2rem;
-    backdrop-filter: blur(1px);
     transition: all 0.3s ease-in-out;
 }
 .keyboard_shortcut_pane.show {scale: 1;}
