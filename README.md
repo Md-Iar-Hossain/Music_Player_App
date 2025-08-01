@@ -21,4 +21,5 @@ Features:
  => *Get audio files dynamically* 
  => *Forward and backward duration through progress.*  
  => *Adding songs in favorite list.*
+ 
 Here is live <a href="https://md-iar-hossain.github.io/Music_Player_App/" target="_blank"> Preview link</a>
