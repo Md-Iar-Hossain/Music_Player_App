@@ -76,3 +76,4 @@ const audioTrackObject = [
     url: 'audios/Tamanna e Dil _Junaid Jamshed.mp3'
   }
 ]
+export default audioTrackObject
